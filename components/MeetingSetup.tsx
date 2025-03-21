@@ -5,7 +5,6 @@ import {
   VideoPreview,
 } from "@stream-io/video-react-sdk";
 import React, { useEffect, useState } from "react";
-import { StreamCall } from "@stream-io/video-react-sdk";
 import { Button } from "./ui/button";
 
 const MeetingSetup = ({

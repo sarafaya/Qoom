@@ -9,17 +9,18 @@ import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 
 export default function Meeting() {
-  // Instead of destructuring `params`, use the `useParams` hook:
   const { id } = useParams();
-  const { isLoaded, user } = useUser();
+  const { isLoaded } = useUser();
+
+  // Prevent calling the hook if `id` is undefined
   if (!id) {
     return <Loader />;
   }
+
   const { call, isCallLoading } = useGetCallById(id);
   const [isSetupComplete, setIsSetupComplete] = useState(false);
 
   // Only render <Loader /> until both Clerk user data & call data are loaded
-  // Wait for both the Clerk user to load AND the call to finish loading
   if (!isLoaded || isCallLoading) {
     return <Loader />;
   }

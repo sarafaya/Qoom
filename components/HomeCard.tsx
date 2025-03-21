@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import react from "react";
 interface HomeCardProps {
   className: string;
   img: string;
