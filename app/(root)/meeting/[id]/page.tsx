@@ -12,15 +12,15 @@ export default function Meeting() {
   const { id } = useParams();
   const { isLoaded } = useUser();
 
-  // Prevent calling the hook if `id` is undefined
+  // ✅ Hook called at the top level with fallback for `id`
+  const { call, isCallLoading } = useGetCallById(id || "");
+  const [isSetupComplete, setIsSetupComplete] = useState(false);
+
+  // Conditional logic for UI rendering
   if (!id) {
     return <Loader />;
   }
 
-  const { call, isCallLoading } = useGetCallById(id);
-  const [isSetupComplete, setIsSetupComplete] = useState(false);
-
-  // Only render <Loader /> until both Clerk user data & call data are loaded
   if (!isLoaded || isCallLoading) {
     return <Loader />;
   }
