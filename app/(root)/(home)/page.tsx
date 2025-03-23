@@ -3,6 +3,7 @@ import MeetingTypeList from "@/components/MeetingTypeList";
 const Home = () => {
   const now = new Date();
   const time = now.toLocaleTimeString("en-SA", {
+    timeZone: "Asia/Riyadh",
     hour: "2-digit",
     minute: "2-digit",
   });
